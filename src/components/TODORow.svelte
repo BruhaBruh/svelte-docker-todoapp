@@ -29,7 +29,7 @@
     {text}
   </p>
   <button
-    class="h-full bg-red-400 font-medium hover:bg-red-500 rounded-lg px-4 py-2 transition ease-in self-center"
+    class="bg-red-400 font-medium hover:bg-red-500 rounded-lg px-4 py-2 transition ease-in self-center"
     on:click={handleClick}>Remove</button
   >
 </div>
