@@ -1,24 +1,21 @@
 version: "3"
 
 services:
-  app:
+  client:
     build: .
-    container_name: svelte-app
+    container_name: svelte-todo-client
     restart: unless-stopped
-    ports:
-      - "3000:3000"
     networks:
       - app-network
 
   webserver:
     image: nginx:alpine
-    container_name: webserver
+    container_name: webserver-todo
     restart: unless-stopped
     depends_on:
-      - app
+      - client
     ports:
-      - "80:80"
-      - "443:443"
+      - "6080:80"
     networks:
       - app-network
     volumes:
