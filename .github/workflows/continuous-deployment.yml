@@ -1,0 +1,25 @@
+name: CD on dedicated server
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+    # Publish `v1.2.3` tags as releases.
+    tags:
+      - v*
+
+  # Run tests for any PRs.
+  pull_request:
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Send WebHook
+        run: curl http://130.61.216.16:9001/hooks/${{ secrets.WEBHOOK_ID }}?token=${{ secrets.WEBHOOK_TOKEN }}
